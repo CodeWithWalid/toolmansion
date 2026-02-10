@@ -17,7 +17,7 @@ export default function ExtractURLsTool() {
 
         // URL regex pattern - matches http, https, ftp URLs
         const urlRegex = /https?:\/\/[^\s<>"{}|\\^`\[\]]+/gi;
-        let matches = input.match(urlRegex) || [];
+        let matches: string[] = Array.from(input.match(urlRegex) || []);
 
         // Clean up URLs (remove trailing punctuation)
         matches = matches.map((url) => url.replace(/[.,;:!?)"'\]]+$/, ""));
