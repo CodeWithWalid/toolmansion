@@ -17,7 +17,7 @@ export default function ExtractEmailsTool() {
 
         // Email regex pattern
         const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
-        let matches = input.match(emailRegex) || [];
+        let matches: string[] = Array.from(input.match(emailRegex) || []);
 
         // Remove duplicates if option is enabled
         if (removeDuplicates) {
