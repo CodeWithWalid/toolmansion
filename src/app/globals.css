@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --radius: 0.75rem;
+
+  /* Custom Utilities */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+:root {
+  /* Light Theme - Clean, Modern, Airy */
+  --background: #ffffff;
+  --foreground: #09090b;
+
+  --card: #ffffff;
+  --card-foreground: #09090b;
+
+  --popover: #ffffff;
+  --popover-foreground: #09090b;
+
+  --primary: #7c3aed;
+  /* Violet 600 - Vibrant */
+  --primary-foreground: #ffffff;
+
+  --secondary: #f4f4f5;
+  /* Zinc 100 */
+  --secondary-foreground: #18181b;
+
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  /* Zinc 500 */
+
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #e4e4e7;
+  /* Zinc 200 */
+  --input: #e4e4e7;
+  --ring: #7c3aed;
+
+  /* Custom */
+  --background-secondary: #f8fafc;
+  --background-tertiary: #f1f5f9;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+.dark {
+  /* Dark Theme - Deep, Rich, Premium */
+  --background: #09090b;
+  /* Zinc 950 */
+  --foreground: #fafafa;
+  /* Zinc 50 */
+
+  --card: #09090b;
+  --card-foreground: #fafafa;
+
+  --popover: #09090b;
+  --popover-foreground: #fafafa;
+
+  --primary: #8b5cf6;
+  /* Violet 500 */
+  --primary-foreground: #ffffff;
+
+  --secondary: #27272a;
+  /* Zinc 800 */
+  --secondary-foreground: #fafafa;
+
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  /* Zinc 400 */
+
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-foreground: #ffffff;
+
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #8b5cf6;
+
+  /* Custom */
+  --background-secondary: #0c0c0e;
+  --background-tertiary: #18181b;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(9, 9, 11, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark .glass-card {
+  background: rgba(24, 24, 27, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* Gradients */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, var(--primary), #ec4899);
+}
+
+/* Animations */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
+}

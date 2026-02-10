@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left Leg -->
+  <path d="M10 10 L25 20 V54 L10 44 V10 Z" fill="#4F46E5" />
+  <!-- Right Leg -->
+  <path d="M54 10 L39 20 V54 L54 44 V10 Z" fill="#4338CA" />
+  <!-- Center V -->
+  <path d="M25 20 L32 25 L39 20 V38 L32 43 L25 38 V20 Z" fill="#6366F1" />
+</svg>

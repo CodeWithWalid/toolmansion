@@ -1,0 +1,69 @@
+"use client";
+
+import { createContext, useContext, useEffect, useState } from "react";
+
+type Theme = "light" | "dark";
+
+interface ThemeContextType {
+    theme: Theme;
+    toggleTheme: () => void;
+    mounted: boolean;
+}
+
+const ThemeContext = createContext<ThemeContextType>({
+    theme: "dark",
+    toggleTheme: () => { },
+    mounted: false,
+});
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+    const [theme, setTheme] = useState<Theme>("dark");
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        // Check for saved theme preference or system preference
+        const savedTheme = localStorage.getItem("theme") as Theme | null;
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+            setTheme("light");
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!mounted) return;
+
+        const root = document.documentElement;
+
+        // Add transitioning class for smooth animation
+        root.classList.add("transitioning");
+
+        if (theme === "dark") {
+            root.classList.add("dark");
+        } else {
+            root.classList.remove("dark");
+        }
+
+        // Remove transitioning class after animation
+        setTimeout(() => {
+            root.classList.remove("transitioning");
+        }, 300);
+
+        localStorage.setItem("theme", theme);
+    }, [theme, mounted]);
+
+    const toggleTheme = () => {
+        setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    };
+
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
+            {children}
+        </ThemeContext.Provider>
+    );
+}
+
+export function useTheme() {
+    return useContext(ThemeContext);
+}

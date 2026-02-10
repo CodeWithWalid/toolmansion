@@ -1,0 +1,18 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="40" fill="#1e1b4b" /> <!-- Dark Indigo Background -->
+  
+  <g transform="translate(32, 32) scale(0.66)">
+      <!-- Left Leg -->
+      <path d="M46 46 L96 86 V176 L46 146 V46 Z" fill="#4F46E5" />
+      <!-- Right Leg -->
+      <path d="M146 46 L96 86 V176 L146 146 V46 Z" fill="#4338CA" />
+      <!-- Center V -->
+      <path d="M96 86 L116 100 L136 86 V136 L116 150 L96 136 V86 Z" fill="#6366F1" />
+      
+      <!-- Retrying Shape logic relative to 192x192 canvas -->
+      <!-- Let's just Paste standard paths simplified -->
+       <path d="M30 30 L75 60 V162 L30 132 V30 Z" fill="#6366F1" />
+       <path d="M162 30 L117 60 V162 L162 132 V30 Z" fill="#4338CA" />
+       <path d="M75 60 L96 74 L117 60 V110 L96 124 L75 110 V60 Z" fill="#818CF8" />
+  </g>
+</svg>
