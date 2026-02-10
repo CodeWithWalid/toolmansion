@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# toolmansion 🧰⚡
+A privacy-first, browser-only tools hub for images, PDFs, text, and developer utilities.  
+Runs fully client-side with **no uploads**. Subsidiary product powered by **Botsquash**.
 
-## Getting Started
+---
 
-First, run the development server:
+## ✅ What it is
+toolmansion is a fast, SEO-first multi-tool web app designed for high-intent tasks like:
+- Image: convert, resize, crop, compress, batch ZIP
+- PDF: merge, split, JPG↔PDF (client-side)
+- Text: counters, case tools, extract emails/URLs, diff
+- Dev: JSON tools, Base64, URL encode/decode, UUID, hashes
+- Generators: QR, passwords, lorem ipsum
 
+---
+
+## 🔐 Privacy by design
+- **100% client-side processing**
+- Files never leave your device
+- No file storage on servers
+- Built for speed and trust
+
+---
+
+## 🚀 Status
+- ✅ 29 tools live
+- ✅ Tool pages + FAQs + related tools blocks
+- ✅ CLS-protected ad placeholders (ads disabled by default)
+
+---
+
+## 🧱 Tech stack
+- Next.js + TypeScript (static-friendly)
+- Tailwind CSS
+- Registry-driven tools + reusable ToolShell layout
+
+---
+
+## 📁 Project structure (high level)
+- `src/data/toolsRegistry.ts` — tools, categories, SEO metadata
+- `src/tools/<tool-slug>/` — tool implementations
+- `src/components/` — ToolShell + shared components
+- `public/ads.txt` — ads.txt (add publisher ID after AdSense approval)
+
+---
+
+## 🧑‍💻 Local development
+
+### Requirements
+- Node.js 18+ recommended
+
+### Install
 ```bash
+npm install
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
