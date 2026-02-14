@@ -519,9 +519,16 @@ export default function ResizeImageTool() {
                 <h3 className="text-lg font-semibold text-foreground mb-3">
                     When should you resize images?
                 </h3>
-                <p className="text-foreground-secondary leading-relaxed">
+                <p className="text-foreground-secondary leading-relaxed mb-6">
                     Resizing images helps meet platform requirements, reduce file size, and avoid distortion. Use <strong className="text-foreground">Exact Dimensions</strong> for design work, or use our ready-made <strong className="text-foreground">Social Media Presets</strong> for perfectly optimized profiles and posts.
                 </p>
+
+                <div className="pt-6 border-t border-border/50">
+                    <h4 className="text-base font-semibold text-foreground mb-2">Remove metadata before sharing?</h4>
+                    <p className="text-sm text-foreground-secondary">
+                        Photos often contain hidden location data. Use our <a href="/exif-data-remover-online" className="text-accent hover:underline">Remove EXIF Data</a> tool to strip this information before resizing.
+                    </p>
+                </div>
             </div>
         </div >
     );

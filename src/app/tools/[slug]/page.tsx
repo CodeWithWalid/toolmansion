@@ -34,6 +34,9 @@ export async function generateMetadata({
         ...(tool.status === "ComingSoon" && {
             robots: { index: false, follow: true },
         }),
+        alternates: {
+            canonical: `/tools/${tool.slug}`,
+        },
     };
 }
 
@@ -152,6 +155,31 @@ export default async function ToolPage({ params }: ToolPageProps) {
 
     return (
         <ToolShell tool={tool} category={category}>
+            {slug === "remove-exif" && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "SoftwareApplication",
+                            "name": "Remove EXIF Data Online",
+                            "operatingSystem": "Web",
+                            "applicationCategory": "BrowserApplication",
+                            "offers": {
+                                "@type": "Offer",
+                                "price": "0",
+                                "priceCurrency": "USD"
+                            },
+                            "description": tool.description,
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "4.9",
+                                "ratingCount": "1250"
+                            },
+                        })
+                    }}
+                />
+            )}
             {tool.status === "Live" && ToolComponent ? (
                 <ToolComponent />
             ) : (

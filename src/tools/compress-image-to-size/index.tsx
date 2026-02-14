@@ -296,9 +296,16 @@ export default function CompressImageToSizeTool() {
                 <h3 className="text-lg font-semibold text-foreground mb-3">
                     When should you use target size compression?
                 </h3>
-                <p className="text-foreground-secondary leading-relaxed">
+                <p className="text-foreground-secondary leading-relaxed mb-6">
                     Target size compression is ideal when images must meet strict upload limits—such as email attachments, forms, or website performance requirements. Instead of guessing quality levels, you choose the size (e.g., <strong className="text-foreground">100KB</strong>, <strong className="text-foreground">2MB</strong>) and let the tool optimize automatically.
                 </p>
+
+                <div className="pt-6 border-t border-border/50">
+                    <h4 className="text-base font-semibold text-foreground mb-2">Remove metadata before sharing?</h4>
+                    <p className="text-sm text-foreground-secondary">
+                        Photos often contain hidden location data. Use our <a href="/exif-data-remover-online" className="text-accent hover:underline">Remove EXIF Data</a> tool to strip this information before compressing.
+                    </p>
+                </div>
             </div>
         </div>
     );

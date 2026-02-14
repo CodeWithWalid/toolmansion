@@ -574,9 +574,16 @@ export default function CropImageTool() {
                 <h3 className="text-lg font-semibold text-foreground mb-3">
                     When should you crop images?
                 </h3>
-                <p className="text-foreground-secondary leading-relaxed">
+                <p className="text-foreground-secondary leading-relaxed mb-6">
                     Cropping helps remove unwanted areas, improve framing, and match platform aspect ratios. Use <strong className="text-foreground">Presets</strong> for social media standards, or <strong className="text-foreground">Free-form cropping</strong> for custom layouts.
                 </p>
+
+                <div className="pt-6 border-t border-border/50">
+                    <h4 className="text-base font-semibold text-foreground mb-2">Remove metadata before sharing?</h4>
+                    <p className="text-sm text-foreground-secondary">
+                        Photos often contain hidden location data. Use our <a href="/exif-data-remover-online" className="text-accent hover:underline">Remove EXIF Data</a> tool to strip this information before cropping.
+                    </p>
+                </div>
             </div>
         </div >
     );

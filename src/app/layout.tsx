@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -73,25 +75,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8948444009622334"
-          crossOrigin="anonymous"
-        />
+      </head>
+      <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                const theme = localStorage.getItem('theme');
-                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark');
-                }
-              })();
-            `,
+               (function() {
+                 const theme = localStorage.getItem('theme');
+                 if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                   document.documentElement.classList.add('dark');
+                 }
+               })();
+             `,
           }}
         />
-      </head>
-      <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
           <FileProvider>
             <Header />
@@ -100,6 +97,12 @@ export default function RootLayout({
             <PWAInstallPrompt />
           </FileProvider>
         </ThemeProvider>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8948444009622334"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

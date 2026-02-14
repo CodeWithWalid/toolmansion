@@ -195,6 +195,73 @@ export default function RemoveExifTool() {
                     </button>
                 </>
             )}
+
+            {/* Content Section */}
+            <div className="mt-12 space-y-8 text-foreground-secondary">
+                <section>
+                    <h2 className="text-xl font-bold text-foreground mb-3">What is EXIF data?</h2>
+                    <p className="leading-relaxed">
+                        EXIF (Exchangeable Image File Format) data is hidden information stored within your image files. When you take a photo with a digital camera or smartphone, it records details such as the camera model, exposure settings (ISO, aperture, shutter speed), date and time, and often the precise <strong>GPS location</strong> where the photo was taken.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 className="text-xl font-bold text-foreground mb-3">Why remove photo metadata?</h2>
+                    <p className="leading-relaxed mb-4">
+                        While EXIF data is useful for photographers to organize and analyze their shots, it can pose a significant privacy risk when shared online.
+                    </p>
+                    <ul className="list-disc pl-5 space-y-2">
+                        <li><strong>Protect your privacy:</strong> Prevent strangers from knowing exactly where you live, work, or travel by removing GPS coordinates.</li>
+                        <li><strong>Reduce file size:</strong> Although metadata is small, removing it can slightly reduce the file size of your images.</li>
+                        <li><strong>Hide camera details:</strong> Keep your photography equipment and settings private.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 className="text-xl font-bold text-foreground mb-3">Does this remove GPS location?</h2>
+                    <p className="leading-relaxed">
+                        Yes. Our tool is designed to completely strip all metadata, including <strong>GPS Latitude, Longitude, and Altitude</strong>. This ensures that your location remains private when you share your photos on social media, blogs, or other public platforms.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 className="text-xl font-bold text-foreground mb-3">Is this secure?</h2>
+                    <p className="leading-relaxed">
+                        Absolutely. Unlike many other online tools, our <strong>Remove EXIF Data</strong> tool processes your images <strong>100% locally in your browser</strong>. Your photos are never uploaded to our servers, ensuring that your personal data never leaves your device.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 className="text-xl font-bold text-foreground mb-3">How to remove metadata from JPG?</h2>
+                    <ol className="list-decimal pl-5 space-y-2">
+                        <li>Click the upload area or drag and drop your image (JPG, PNG, WebP).</li>
+                        <li>Review the detected metadata in the preview panel.</li>
+                        <li>Click <strong>"Remove All Metadata"</strong> to strip the EXIF data.</li>
+                        <li>Download your clean, privacy-safe image.</li>
+                    </ol>
+                </section>
+
+                <section className="bg-background-secondary p-6 rounded-xl border border-border">
+                    <h3 className="text-lg font-bold text-foreground mb-3">Enhance Your Images Further</h3>
+                    <p className="mb-4">
+                        After Securing your photos, you might want to optimize them further using our other free tools:
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <a href="/tools/compress-image-to-size" className="flex items-center gap-2 p-3 bg-background rounded-lg border border-border hover:border-accent transition-colors group">
+                            <span className="text-xl">📉</span>
+                            <span className="font-medium group-hover:text-accent">Compress Image</span>
+                        </a>
+                        <a href="/tools/resize-image" className="flex items-center gap-2 p-3 bg-background rounded-lg border border-border hover:border-accent transition-colors group">
+                            <span className="text-xl">📏</span>
+                            <span className="font-medium group-hover:text-accent">Resize Image</span>
+                        </a>
+                        <a href="/tools/crop-image" className="flex items-center gap-2 p-3 bg-background rounded-lg border border-border hover:border-accent transition-colors group">
+                            <span className="text-xl">✂️</span>
+                            <span className="font-medium group-hover:text-accent">Crop Image</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
         </div>
     );
 }

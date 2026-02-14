@@ -299,9 +299,16 @@ export default function BulkCompressImagesTool() {
                 <h3 className="text-lg font-semibold text-foreground mb-3">
                     When should you use bulk compression?
                 </h3>
-                <p className="text-foreground-secondary leading-relaxed">
+                <p className="text-foreground-secondary leading-relaxed mb-6">
                     Bulk image compression is ideal for galleries, website uploads, or large folders where consistent quality and faster processing matter more than per-image tuning. It helps you save time by processing dozens of images at once without uploading them to a server.
                 </p>
+
+                <div className="pt-6 border-t border-border/50">
+                    <h4 className="text-base font-semibold text-foreground mb-2">Remove metadata before sharing?</h4>
+                    <p className="text-sm text-foreground-secondary">
+                        Photos often contain hidden location data. Use our <a href="/exif-data-remover-online" className="text-accent hover:underline">Remove EXIF Data</a> tool to strip this information before compressing.
+                    </p>
+                </div>
             </div>
         </div >
     );
