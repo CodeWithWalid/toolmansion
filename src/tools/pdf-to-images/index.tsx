@@ -185,7 +185,7 @@ export default function PdfToImagesTool() {
                             <div key={page.pageNumber} className="bg-background-secondary rounded-xl p-3">
                                 <img
                                     src={page.preview}
-                                    alt={`Page ${page.pageNumber}`}
+                                    alt={`PDF page ${page.pageNumber} converted to image - click to download`}
                                     className="w-full h-40 object-contain rounded-lg bg-white"
                                 />
                                 <div className="mt-2 flex items-center justify-between">

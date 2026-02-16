@@ -1,8 +1,11 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Terms of Service",
+    title: "Terms of Service | ToolMansion",
     description: "Terms of service for ToolMansion. Read our usage terms, disclaimers, and policies.",
+    alternates: {
+        canonical: "/terms",
+    },
 };
 
 export default function TermsPage() {

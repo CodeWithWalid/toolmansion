@@ -4,6 +4,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Privacy Policy | ToolMansion",
     description: "Our commitment to your privacy. No uploads, no servers, 100% client-side processing.",
+    alternates: {
+        canonical: "/privacy",
+    },
 };
 
 export default function PrivacyPage() {

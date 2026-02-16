@@ -357,7 +357,7 @@ export default function CropImageTool() {
                         <img
                             ref={imageRef}
                             src={preview}
-                            alt="Preview"
+                            alt="Image crop preview - select area to crop with draggable selection box"
                             className="w-full h-full object-contain"
                             draggable={false}
                         />
@@ -560,7 +560,7 @@ export default function CropImageTool() {
                             <div className="max-w-md rounded-xl overflow-hidden bg-background border border-accent">
                                 <img
                                     src={output.url}
-                                    alt="Cropped"
+                                    alt="Final cropped image result - selected area extracted and ready for download"
                                     className="w-full h-auto"
                                 />
                             </div>

@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "About ToolMansion",
     description: "Learn about ToolMansion — free, privacy-first browser tools powered by Botsquash.",
+    alternates: {
+        canonical: "/about",
+    },
 };
 
 export default function AboutPage() {

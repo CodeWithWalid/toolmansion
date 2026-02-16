@@ -65,11 +65,20 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "ToolMansion",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "ToolMansion - Free browser-based privacy tools for images, PDFs and developers",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "ToolMansion | 100% Private Browser-Based Tools",
     description: "Free online tools that work entirely in your browser. No uploads, complete privacy.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -83,7 +92,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "YOUR_GOOGLE_VERIFICATION_CODE",
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 
@@ -95,6 +107,29 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Preconnect hints for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        
+        {/* GA4 Tracking Code */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA4_ID || 'G-XXXXXXXXXX'}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA4_ID || 'G-XXXXXXXXXX'}', {
+              page_title: document.title,
+              page_location: window.location.href,
+              send_page_view: true
+            });
+          `}
+        </Script>
       </head>
       <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
         <script

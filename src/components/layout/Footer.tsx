@@ -11,7 +11,7 @@ export function Footer() {
                     <div className="col-span-1 md:col-span-2">
                         <Link href="/" className="flex items-center gap-3 mb-4 group">
                             <div className="w-8 h-8 relative transition-transform duration-300 group-hover:scale-110">
-                                <img src="/logo.svg" alt="ToolMansion Logo" className="w-full h-full object-contain" />
+                                <img src="/logo.svg" alt="ToolMansion logo - 100% private offline-capable online tools" className="w-full h-full object-contain" />
                             </div>
                             <span className="text-xl font-bold tracking-tight text-foreground">ToolMansion</span>
                         </Link>

@@ -3,9 +3,12 @@ import { TOOLS, CATEGORIES } from "@/data/toolsRegistry";
 import { ToolGrid } from "@/components/directory/ToolGrid";
 
 export const metadata: Metadata = {
-    title: "All Tools",
+    title: "All Tools - Browse 29+ Free Browser-Based Tools | ToolMansion",
     description:
         "Browse our complete collection of free browser-based tools. Convert images, format JSON, generate passwords and more - all processing happens locally in your browser.",
+    alternates: {
+        canonical: "/tools",
+    },
 };
 
 export default function ToolsPage() {

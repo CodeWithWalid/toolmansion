@@ -18,7 +18,7 @@ export function Header() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="w-10 h-10 relative transition-transform duration-300 group-hover:scale-110">
-                            <img src="/logo.svg" alt="ToolMansion Logo" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]" />
+                            <img src="/logo.svg" alt="ToolMansion - Free browser-based privacy tools for images, PDFs and developers" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]" />
                         </div>
                         <span className="text-xl font-bold tracking-tight text-foreground bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
                             ToolMansion

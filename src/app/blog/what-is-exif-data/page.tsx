@@ -5,11 +5,47 @@ import Image from "next/image";
 export const metadata: Metadata = {
     title: "What is EXIF Data? The Hidden 'Digital Passport' in Your Photos",
     description: "EXIF data is the invisible digital footprint in every photo you take. Learn what it stores, why it matters for privacy, and how to control it.",
+    alternates: {
+        canonical: "/blog/what-is-exif-data",
+    },
+};
+
+// Article Schema for SEO
+const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is EXIF Data? The Hidden 'Digital Passport' in Your Photos",
+    "description": "EXIF data is the invisible digital footprint in every photo you take. Learn what it stores, why it matters for privacy, and how to control it.",
+    "image": "https://toolmansion.com/blog/exif-visualization.jpg",
+    "author": {
+        "@type": "Organization",
+        "name": "ToolMansion"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "ToolMansion",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://toolmansion.com/logo.svg"
+        }
+    },
+    "datePublished": "2026-02-01",
+    "dateModified": "2026-02-01",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://toolmansion.com/blog/what-is-exif-data"
+    }
 };
 
 export default function Page() {
     return (
-        <article>
+        <>
+            {/* Article Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+            <article>
             <header className="mb-10">
                 <h1 className="mb-4 leading-tight">What is EXIF Data? <br /><span className="text-accent">The Hidden "Passport" in Your Photos</span></h1>
                 <p className="text-xl text-foreground-secondary leading-relaxed">
@@ -105,5 +141,6 @@ export default function Page() {
                 </p>
             </section>
         </article>
+        </>
     );
 }

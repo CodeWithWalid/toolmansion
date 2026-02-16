@@ -6,11 +6,47 @@ import Image from "next/image";
 export const metadata: Metadata = {
     title: "Why Removing Photo Metadata Matters: 3 Real Privacy Risks",
     description: "It's not just about file size. Unscrubbed photo metadata can lead to stalking, theft, and corporate espionage. Understand the risks.",
+    alternates: {
+        canonical: "/blog/why-removing-metadata-matters",
+    },
+};
+
+// Article Schema for SEO
+const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why Removing Photo Metadata Matters: 3 Real Privacy Risks",
+    "description": "It's not just about file size. Unscrubbed photo metadata can lead to stalking, theft, and corporate espionage.",
+    "image": "https://toolmansion.com/blog/privacy-data-security.jpg",
+    "author": {
+        "@type": "Organization",
+        "name": "ToolMansion"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "ToolMansion",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://toolmansion.com/logo.svg"
+        }
+    },
+    "datePublished": "2026-02-01",
+    "dateModified": "2026-02-01",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://toolmansion.com/blog/why-removing-metadata-matters"
+    }
 };
 
 export default function Page() {
     return (
-        <article>
+        <>
+            {/* Article Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+            <article>
             <header className="mb-10">
                 <h1 className="mb-4 leading-tight">Beyond File Size: <br /><span className="text-accent">Why Cleaning Your Photos is a Safety Must</span></h1>
                 <p className="text-xl text-foreground-secondary leading-relaxed">
@@ -105,5 +141,6 @@ export default function Page() {
                 </div>
             </section>
         </article>
+        </>
     );
 }

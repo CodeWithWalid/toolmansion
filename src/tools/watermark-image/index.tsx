@@ -154,7 +154,7 @@ export default function WatermarkImageTool() {
                         {/* Preview */}
                         <div className="bg-background-secondary rounded-xl p-4">
                             <h3 className="text-sm font-medium text-foreground-secondary mb-3">Preview</h3>
-                            <img src={result || image} alt="Preview" className="w-full max-h-80 object-contain rounded-lg" />
+                            <img src={result || image} alt="Image with watermark preview - showing watermarked photo result" className="w-full max-h-80 object-contain rounded-lg" />
                         </div>
 
                         {/* Options */}
@@ -189,7 +189,7 @@ export default function WatermarkImageTool() {
                                     <label className="block text-sm font-medium text-foreground mb-2">Watermark Image</label>
                                     <input type="file" accept="image/*" onChange={handleWatermarkUpload} className="hidden" id="wm-upload" />
                                     <label htmlFor="wm-upload" className="block p-4 border-2 border-dashed border-border rounded-lg text-center cursor-pointer hover:border-accent/50">
-                                        {watermarkImage ? <img src={watermarkImage} alt="Watermark" className="max-h-20 mx-auto" /> : <span className="text-foreground-secondary">Click to upload watermark</span>}
+                                        {watermarkImage ? <img src={watermarkImage} alt="Custom watermark image uploaded for overlay" className="max-h-20 mx-auto" /> : <span className="text-foreground-secondary">Click to upload watermark</span>}
                                     </label>
                                 </div>
                             )}

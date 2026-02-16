@@ -121,7 +121,7 @@ export default function RemoveExifTool() {
                         {/* Image Preview */}
                         <div className="bg-background-secondary rounded-xl p-4">
                             <h3 className="text-sm font-medium text-foreground-secondary mb-3">Image</h3>
-                            <img src={image} alt="Uploaded" className="w-full max-h-64 object-contain rounded-lg" />
+                            <img src={image} alt="Uploaded image showing EXIF metadata location and camera data before removal" className="w-full max-h-64 object-contain rounded-lg" />
                             <p className="text-center text-sm text-foreground-secondary mt-2">{fileName}</p>
                         </div>
 

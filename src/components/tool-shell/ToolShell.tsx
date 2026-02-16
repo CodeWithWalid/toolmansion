@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ToolDefinition, Category, getToolBySlug, getCategoryBySlug } from "@/data/toolsRegistry";
 import { FAQ } from "./FAQ";
+import { ToolTracker } from "./ToolTracker";
 import { ChevronRight, Home, ShieldCheck, Zap } from "lucide-react";
 
 interface ToolShellProps {
@@ -43,6 +44,9 @@ export function ToolShell({ tool, category, children }: ToolShellProps) {
 
     return (
         <div className="min-h-screen pb-12">
+            {/* Track tool usage */}
+            <ToolTracker toolName={tool.slug} toolCategory={tool.category} />
+            
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

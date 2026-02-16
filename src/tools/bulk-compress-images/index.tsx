@@ -236,7 +236,7 @@ export default function BulkCompressImagesTool() {
                             <div key={i} className="relative group bg-background-secondary rounded-xl p-2">
                                 <img
                                     src={item.compressed || item.preview}
-                                    alt={item.file.name}
+                                    alt={`${item.file.name} - bulk compressed image with reduced file size`}
                                     className="w-full h-24 object-cover rounded-lg"
                                 />
                                 <button

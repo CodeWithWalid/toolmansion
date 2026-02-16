@@ -637,7 +637,7 @@ export default function ConvertImageTool() {
                         <div className="aspect-video rounded-xl overflow-hidden bg-background border border-border">
                             <img
                                 src={files[0].preview}
-                                alt="Original"
+                                alt={`Original image ${files[0].file.name} before format conversion`}
                                 className="w-full h-full object-contain"
                             />
                         </div>
@@ -650,7 +650,7 @@ export default function ConvertImageTool() {
                         <div className="aspect-video rounded-xl overflow-hidden bg-background border border-accent">
                             <img
                                 src={files[0].output.url}
-                                alt="Converted"
+                                alt={`Converted image in ${outputFormat.toUpperCase()} format ready for download`}
                                 className="w-full h-full object-contain"
                             />
                         </div>

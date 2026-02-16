@@ -165,14 +165,14 @@ export default function CompressImageToSizeTool() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-background-secondary rounded-xl p-4">
                             <h3 className="text-sm font-medium text-foreground-secondary mb-3">Original</h3>
-                            <img src={image} alt="Original" className="w-full h-48 object-contain rounded-lg" />
+                            <img src={image} alt={`Original uncompressed image - ${formatSize(originalSize)} file size`} className="w-full h-48 object-contain rounded-lg" />
                             <p className="text-center mt-2 text-sm text-foreground">{formatSize(originalSize)}</p>
                         </div>
                         <div className="bg-background-secondary rounded-xl p-4">
                             <h3 className="text-sm font-medium text-foreground-secondary mb-3">Compressed</h3>
                             {compressedImage ? (
                                 <>
-                                    <img src={compressedImage} alt="Compressed" className="w-full h-48 object-contain rounded-lg" />
+                                    <img src={compressedImage} alt={`Compressed image result - ${formatSize(compressedSize)} (${reduction}% size reduction)`} className="w-full h-48 object-contain rounded-lg" />
                                     <p className="text-center mt-2 text-sm text-accent font-medium">
                                         {formatSize(compressedSize)} ({reduction}% smaller)
                                     </p>

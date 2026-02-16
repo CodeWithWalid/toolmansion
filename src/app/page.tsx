@@ -30,12 +30,53 @@ export const metadata: Metadata = {
   },
 };
 
+// WebSite Schema for sitelinks searchbox
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ToolMansion",
+  "url": "https://toolmansion.com",
+  "description": "Free privacy-focused browser-based tools for images, PDFs, and developers. 100% offline processing.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://toolmansion.com/tools?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// Organization Schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ToolMansion",
+  "url": "https://toolmansion.com",
+  "logo": "https://toolmansion.com/logo.svg",
+  "description": "Free browser-based tools that work offline. Convert images, manage PDFs, format code with complete privacy.",
+  "sameAs": [
+    "https://github.com/codewithwalid"
+  ]
+};
+
 export default function HomePage() {
   const featuredTools = TOOLS.filter((tool) => tool.featured);
   const liveTools = TOOLS.filter((tool) => tool.status === "Live");
 
   return (
     <div className="min-h-screen">
+      {/* WebSite Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      {/* Organization Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      
       {/* Hero Section */}
       <section className="relative py-24 md:py-36 overflow-hidden">
         {/* Background effects */}
@@ -53,9 +94,9 @@ export default function HomePage() {
           </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
-            <span className="hero-gradient">The Ultimate</span>
+            <span className="hero-gradient">Free Browser-Based</span>
             <br />
-            <span className="text-foreground">Suite of Tools</span>
+            <span className="text-foreground">Tools for Images, PDFs & Developers</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">

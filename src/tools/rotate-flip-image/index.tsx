@@ -185,7 +185,7 @@ export default function RotateFlipImageTool() {
                         <div className="flex items-center justify-center min-h-[300px] max-h-[500px]">
                             <img
                                 src={image}
-                                alt="Preview"
+                                alt="Image rotation and flip preview - showing transformed image with applied rotation"
                                 className="max-w-full max-h-[450px] object-contain transition-transform duration-300"
                                 style={{ transform: getTransformStyle() }}
                             />

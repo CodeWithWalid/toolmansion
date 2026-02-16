@@ -492,7 +492,7 @@ export default function ResizeImageTool() {
                                 <div className="aspect-video rounded-xl overflow-hidden bg-background border border-border">
                                     <img
                                         src={preview}
-                                        alt="Original"
+                                        alt={`Original image before resizing - ${originalDimensions.width} × ${originalDimensions.height} pixels`}
                                         className="w-full h-full object-contain"
                                     />
                                 </div>
@@ -504,7 +504,7 @@ export default function ResizeImageTool() {
                                 <div className="aspect-video rounded-xl overflow-hidden bg-background border border-accent">
                                     <img
                                         src={output.url}
-                                        alt="Resized"
+                                        alt={`Resized image output - ${width} × ${height} pixels, optimized dimensions`}
                                         className="w-full h-full object-contain"
                                     />
                                 </div>

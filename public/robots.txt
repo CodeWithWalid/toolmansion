@@ -1,6 +1,29 @@
 User-agent: *
 Allow: /
-Disallow: /private/
-Disallow: /api/
 
+# Sitemap location
 Sitemap: https://toolmansion.com/sitemap.xml
+
+# Disallow non-essential paths
+Disallow: /api/
+Disallow: /*?*ref=
+Disallow: /*?*utm_source=
+Disallow: /*?*utm_medium=
+Disallow: /*?*utm_campaign=
+
+# Allow static assets
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.ico$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+
+# Crawl delay (optional, uncomment if needed)
+# Crawl-delay: 1

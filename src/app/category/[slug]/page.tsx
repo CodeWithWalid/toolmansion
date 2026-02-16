@@ -87,8 +87,33 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     const tools = getToolsByCategory(slug);
     const liveCount = tools.filter((t) => t.status === "Live").length;
 
+    // BreadcrumbList Schema
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://toolmansion.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": category.name,
+                "item": `https://toolmansion.com/category/${slug}`
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen py-12 md:py-20">
+            {/* Breadcrumb Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="text-center mb-12">

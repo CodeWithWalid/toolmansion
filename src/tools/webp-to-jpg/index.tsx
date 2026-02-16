@@ -177,7 +177,7 @@ export default function WebpToJpgTool() {
                             <div key={i} className="relative group bg-background-secondary rounded-xl p-2">
                                 <img
                                     src={item.converted || item.preview}
-                                    alt={item.file.name}
+                                    alt={`${item.file.name} - WebP to JPG conversion preview, ready for download`}
                                     className="w-full h-32 object-cover rounded-lg"
                                 />
                                 <button

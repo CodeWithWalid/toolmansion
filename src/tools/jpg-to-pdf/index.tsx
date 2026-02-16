@@ -190,7 +190,7 @@ export default function JpgToPdfTool() {
                                 <span className="w-6 h-6 flex items-center justify-center bg-accent/20 text-accent rounded-full text-sm font-medium">
                                     {i + 1}
                                 </span>
-                                <img src={item.preview} alt="" className="w-12 h-12 object-cover rounded-lg" />
+                                <img src={item.preview} alt={`Preview of ${item.file.name}`} className="w-12 h-12 object-cover rounded-lg" />
                                 <span className="flex-1 text-foreground truncate">{item.file.name}</span>
                                 <div className="flex gap-1">
                                     <button

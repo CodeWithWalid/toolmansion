@@ -6,11 +6,47 @@ import Image from "next/image";
 export const metadata: Metadata = {
     title: "Hidden in Plain Sight: How to Check If Your Photos Have Location Data",
     description: "Your photos might be broadcasting your home address. Here is how to check for hidden GPS data on iPhone, Android, Mac, and Windows.",
+    alternates: {
+        canonical: "/blog/how-to-check-photo-location-data",
+    },
+};
+
+// Article Schema for SEO
+const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Hidden in Plain Sight: How to Check If Your Photos Have Location Data",
+    "description": "Your photos might be broadcasting your home address. Here is how to check for hidden GPS data on iPhone, Android, Mac, and Windows.",
+    "image": "https://toolmansion.com/blog/check-location-data.jpg",
+    "author": {
+        "@type": "Organization",
+        "name": "ToolMansion"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "ToolMansion",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://toolmansion.com/logo.svg"
+        }
+    },
+    "datePublished": "2026-02-01",
+    "dateModified": "2026-02-01",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://toolmansion.com/blog/how-to-check-photo-location-data"
+    }
 };
 
 export default function Page() {
     return (
-        <article>
+        <>
+            {/* Article Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+            <article>
             <header className="mb-10">
                 <h1 className="mb-4 leading-tight">Is Your Camera Tracking You? <br /><span className="text-accent">How to Check for Hidden GPS Data</span></h1>
                 <p className="text-xl text-foreground-secondary leading-relaxed">
@@ -115,6 +151,6 @@ export default function Page() {
                 </div>
             </section>
         </article>
+        </>
     );
 }
-
