@@ -78,9 +78,9 @@ export const TOOLS: ToolDefinition[] = [
     featured: true,
     relatedTools: ['resize-image', 'crop-image', 'compress-image-to-size'],
     seo: {
-      title: 'Convert Image Offline - No Upload Required | Free Tool',
-      h1: 'Convert Images to JPG, PNG, or WebP — 100% Private & Offline',
-      metaDescription: 'Convert images between JPG, PNG, and WebP formats instantly in your browser. 100% client-side, no files uploaded. Batch conversion supported.',
+      title: 'Image Converter - Convert JPG, PNG, WebP Offline',
+      h1: 'Convert Images Between JPG, PNG & WebP — 100% Private & Offline',
+      metaDescription: 'Convert images between JPG, PNG, and WebP formats instantly in your browser. No uploads, 100% private, completely free. Batch conversion supported.',
       faq: [
         { q: 'Is this image converter safe for sensitive images?', a: 'Yes. Unlike other sites, this tool runs 100% in your browser. Your images never leave your device, making it safe for sensitive documents and personal photos.' },
         { q: 'What’s the difference between JPG, PNG, and WebP?', a: 'JPG is best for photos (smaller size). PNG is best for graphics with transparency. WebP offers the best balance of small size and high quality for the web.' },
@@ -101,9 +101,9 @@ export const TOOLS: ToolDefinition[] = [
     featured: true,
     relatedTools: ['convert-image', 'crop-image', 'compress-image-to-size'],
     seo: {
-      title: 'Resize Image Locally - Private & Fast | Free Tool',
+      title: 'Image Resizer - Resize Images to Exact Dimensions',
       h1: 'Resize Images to Exact Dimensions — Private & Offline',
-      metaDescription: 'Resize images to exact dimensions or percentage without uploading. Secure client-side processing works offline.',
+      metaDescription: 'Resize images to exact pixel dimensions with aspect ratio control. Social media presets included. Works offline in your browser — no uploads, completely private.',
       faq: [
         { q: 'Does resizing reduce image quality?', a: 'It depends. Scaling down (making smaller) usually maintains quality. Scaling up (making larger) can cause pixelation, but our "Prevent Upscaling" feature helps avoid this.' },
         { q: 'What image size should I use for social media?', a: 'We include built-in presets for Instagram (1080x1080), Twitter Header (1500x500), and more. Just select a preset to get the perfect size.' },
@@ -147,9 +147,9 @@ export const TOOLS: ToolDefinition[] = [
     featured: false,
     relatedTools: ['convert-image', 'bulk-compress-images', 'resize-image'],
     seo: {
-      title: 'Compress Image to Specific Size (KB/MB) - Local Tool',
+      title: 'Image Compressor - Reduce File Size Without Losing Quality',
       h1: 'Compress Images to Exact File Size (KB or MB) — Offline & Secure',
-      metaDescription: 'Compress images to a target file size (e.g., 500KB, 1MB) securely in your browser. No server uploads, works offline.',
+      metaDescription: 'Compress images to reduce file size while maintaining quality. Target specific KB/MB sizes. All processing happens locally — your images never leave your device.',
       faq: [
         { q: 'Can I compress an image to exactly 100KB?', a: 'Yes! Just set the target size to 100KB, and the tool will automatically adjust the compression level to get your image under that limit.' },
         { q: 'Why can’t some images reach very small file sizes?', a: 'If an image has high resolution and detail, compressing it to a tiny size (like 10KB) might require too much quality loss. We recommend resizing the image first if you need it that small.' },
@@ -260,8 +260,8 @@ export const TOOLS: ToolDefinition[] = [
     featured: false,
     relatedTools: ['convert-image', 'compress-image-to-size', 'resize-image'],
     seo: {
-      title: 'WebP to JPG Converter - Free Online Tool',
-      metaDescription: 'Convert WebP images to JPG format instantly. Free browser tool, no upload required.',
+      title: 'WebP to JPG - Convert WebP Images to JPEG',
+      metaDescription: 'Convert WebP images to JPG format for broader compatibility. Batch convert multiple files. All processing happens locally — completely private.',
       faq: [
         { q: 'Why convert WebP to JPG?', a: 'Some older software and platforms do not support WebP format. JPG has universal compatibility.' },
         { q: 'Is there quality loss?', a: 'Minimal quality loss occurs during conversion. You can adjust the JPG quality setting.' },
@@ -284,8 +284,8 @@ export const TOOLS: ToolDefinition[] = [
     featured: false,
     relatedTools: ['merge-pdf', 'split-pdf', 'convert-image'],
     seo: {
-      title: 'JPG to PDF Converter - Create PDF from Images | Free Tool',
-      metaDescription: 'Convert JPG images to PDF documents. Combine multiple images into one PDF. Free browser tool.',
+      title: 'JPG to PDF - Convert Images to PDF Online',
+      metaDescription: 'Convert JPG, PNG images to PDF documents instantly. Merge multiple images into one PDF or create separate pages. Works offline in your browser.',
       faq: [
         { q: 'Can I combine multiple images into one PDF?', a: 'Yes, you can add multiple images and arrange their order before creating the PDF.' },
         { q: 'What image formats are supported?', a: 'JPG, PNG, and WebP images can be converted to PDF.' },
@@ -306,8 +306,8 @@ export const TOOLS: ToolDefinition[] = [
     featured: false,
     relatedTools: ['split-pdf', 'jpg-to-pdf'],
     seo: {
-      title: 'Merge PDF Files - Combine PDFs Online | Free Tool',
-      metaDescription: 'Merge multiple PDF files into one document. Drag to reorder pages. Free browser tool, no upload.',
+      title: 'PDF Merger - Combine Multiple PDFs into One',
+      metaDescription: 'Merge multiple PDF files into one document instantly. Drag, reorder, and combine — all in your browser. 100% secure, no file uploads required.',
       faq: [
         { q: 'How many PDFs can I merge?', a: 'You can merge as many PDFs as your browser can handle, typically dozens of files.' },
         { q: 'Can I reorder pages?', a: 'Yes, drag and drop to reorder pages from different PDFs before merging.' },
@@ -371,8 +371,8 @@ export const TOOLS: ToolDefinition[] = [
     featured: false,
     relatedTools: ['case-converter', 'remove-duplicate-lines', 'extract-emails'],
     seo: {
-      title: 'Word Counter - Count Words, Characters & More | Free Tool',
-      metaDescription: 'Count words, characters, sentences, and paragraphs. Real-time text analysis with reading time estimate.',
+      title: 'Word Counter - Count Words, Characters & Sentences',
+      metaDescription: 'Free online word counter. Count words, characters, sentences, and paragraphs instantly. Perfect for essays, articles, and social media limits.',
       faq: [
         { q: 'What statistics are provided?', a: 'Word count, character count (with and without spaces), sentences, paragraphs, and estimated reading time.' },
         { q: 'Does it count in real-time?', a: 'Yes, statistics update instantly as you type or paste text.' },
@@ -483,8 +483,8 @@ export const TOOLS: ToolDefinition[] = [
     featured: false,
     relatedTools: ['base64', 'url-encode'],
     seo: {
-      title: 'JSON Formatter & Validator - Beautify JSON Online | Free Tool',
-      metaDescription: 'Format, validate, and beautify JSON with syntax highlighting. Minify or expand. Free browser tool.',
+      title: 'JSON Formatter - Beautify & Validate JSON Online',
+      metaDescription: 'Format, validate, and beautify JSON data with syntax highlighting. Works offline in your browser. Copy formatted JSON with one click.',
       faq: [
         { q: 'Does it validate JSON?', a: 'Yes, invalid JSON is detected and error locations are highlighted.' },
         { q: 'Can I minify JSON?', a: 'Yes, switch between beautified (expanded) and minified (compact) views.' },
@@ -573,8 +573,8 @@ export const TOOLS: ToolDefinition[] = [
     featured: false,
     relatedTools: ['password-generator', 'uuid-generator'],
     seo: {
-      title: 'QR Code Generator - Create QR Codes Online | Free Tool',
-      metaDescription: 'Generate QR codes for URLs, text, WiFi credentials, and more. Download as PNG or SVG. Free.',
+      title: 'QR Code Generator - Create QR Codes Free',
+      metaDescription: 'Generate QR codes for URLs, text, WiFi, and more. Customizable size and error correction. Create instantly in your browser without uploading data.',
       faq: [
         { q: 'What types of QR codes can I create?', a: 'URLs, plain text, WiFi credentials, vCards, email, SMS, and phone numbers.' },
         { q: 'What download formats are available?', a: 'Download as PNG for images or SVG for scalable vector graphics.' },
@@ -595,8 +595,8 @@ export const TOOLS: ToolDefinition[] = [
     featured: false,
     relatedTools: ['uuid-generator', 'qr-generator'],
     seo: {
-      title: 'Password Generator - Create Strong Passwords | Free Tool',
-      metaDescription: 'Generate strong, random passwords with customizable length and character options. Free and secure.',
+      title: 'Password Generator - Create Strong Secure Passwords',
+      metaDescription: 'Generate strong, random passwords with customizable length and characters. Cryptographically secure, works offline. No data sent to any server.',
       faq: [
         { q: 'How secure are the generated passwords?', a: 'Passwords are generated using cryptographically secure random numbers via Web Crypto API.' },
         { q: 'What options are available?', a: 'Customize length, include/exclude uppercase, lowercase, numbers, and special characters.' },

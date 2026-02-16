@@ -1,8 +1,34 @@
+import { Metadata } from "next";
 import { TOOLS, CATEGORIES } from "@/data/toolsRegistry";
 import { CategoryTile } from "@/components/directory/CategoryTile";
 import { ToolGrid } from "@/components/directory/ToolGrid";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Zap, Lock, WifiOff } from "lucide-react";
+
+// Homepage-specific SEO metadata
+export const metadata: Metadata = {
+  title: "ToolMansion | 100% Private Browser-Based Image & PDF Tools",
+  description: "Free online tools that work entirely in your browser. Convert images, manage PDFs, format code — no uploads, complete privacy. 29+ tools available.",
+  keywords: [
+    "browser-based tools",
+    "offline tools",
+    "privacy tools",
+    "image converter",
+    "pdf tools",
+    "developer tools",
+    "no upload",
+    "secure file processing",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "ToolMansion | 100% Private Browser-Based Image & PDF Tools",
+    description: "Free online tools that work entirely in your browser. Convert images, manage PDFs, format code — no uploads, complete privacy.",
+    url: "/",
+    type: "website",
+  },
+};
 
 export default function HomePage() {
   const featuredTools = TOOLS.filter((tool) => tool.featured);

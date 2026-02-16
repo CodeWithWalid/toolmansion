@@ -27,19 +27,24 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://toolmansion.com"),
   title: {
-    default: "ToolMansion - Free Browser-Based Tools (Offline Capable)",
+    default: "ToolMansion | 100% Private Browser-Based Image & PDF Tools",
     template: "%s | ToolMansion",
   },
   description:
-    "ToolMansion: Free online tools that run entirely in your browser. Convert specific files, resize images, and more with complete privacy. No uploads, works offline.",
+    "Free online tools that work entirely in your browser. Convert images, manage PDFs, format code — no uploads, complete privacy. 29+ tools available.",
   keywords: [
     "toolmansion",
     "online tools",
     "browser tools",
-    "image converter",
-    "image resizer",
     "offline tools",
     "privacy focused",
+    "image converter",
+    "image resizer",
+    "pdf merger",
+    "json formatter",
+    "no upload",
+    "private",
+    "secure",
   ],
   authors: [{ name: "ToolMansion" }],
   manifest: "/manifest.webmanifest",
@@ -54,16 +59,31 @@ export const metadata: Metadata = {
     title: "ToolMansion",
   },
   openGraph: {
-    title: "ToolMansion - Free Browser-Based Tools",
+    title: "ToolMansion | 100% Private Browser-Based Tools",
     description:
-      "Free online tools that run entirely in your browser. No uploads, complete privacy.",
+      "Free online tools that work entirely in your browser. Convert images, manage PDFs, format code — no uploads, complete privacy.",
     type: "website",
     locale: "en_US",
     siteName: "ToolMansion",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "ToolMansion | 100% Private Browser-Based Tools",
+    description: "Free online tools that work entirely in your browser. No uploads, complete privacy.",
+  },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: "YOUR_GOOGLE_VERIFICATION_CODE",
   },
 };
 

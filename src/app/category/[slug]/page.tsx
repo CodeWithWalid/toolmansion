@@ -17,6 +17,35 @@ export async function generateStaticParams() {
     }));
 }
 
+// SEO-optimized titles for categories (without | ToolMansion - layout adds it)
+const categorySeoData: Record<string, { title: string; description: string; keywords: string[] }> = {
+    image: {
+        title: "Image Tools - Resize, Convert & Compress Images",
+        description: "Free browser-based image tools. Convert between JPG, PNG, WebP, resize, compress, crop, add watermarks — all processing happens locally on your device. No uploads.",
+        keywords: ["image tools", "image converter", "resize image", "compress image", "browser image editor"],
+    },
+    pdf: {
+        title: "PDF Tools - Merge, Split & Convert PDFs Online",
+        description: "Free PDF tools that work offline in your browser. Merge multiple PDFs, split pages, convert to images — 100% private, no file uploads required.",
+        keywords: ["pdf tools", "merge pdf", "split pdf", "pdf converter", "offline pdf"],
+    },
+    text: {
+        title: "Text Tools - Word Counter, Case Converter & More",
+        description: "Free text manipulation tools. Count words, convert case, remove duplicates, extract emails/URLs — all processed locally in your browser for complete privacy.",
+        keywords: ["text tools", "word counter", "case converter", "text utilities"],
+    },
+    dev: {
+        title: "Developer Tools - JSON Formatter, Base64, UUID Generator",
+        description: "Free developer utilities that run in your browser. Format JSON, encode Base64, generate UUIDs and QR codes. No internet required after load.",
+        keywords: ["developer tools", "json formatter", "base64 encoder", "uuid generator", "dev utilities"],
+    },
+    generators: {
+        title: "Online Generators - QR Codes, Passwords, UUIDs",
+        description: "Free online generators for QR codes, secure passwords, UUIDs, and Lorem Ipsum. Generate instantly in your browser without uploading any data.",
+        keywords: ["qr code generator", "password generator", "uuid generator", "online generators"],
+    },
+};
+
 export async function generateMetadata({
     params,
 }: CategoryPageProps): Promise<Metadata> {
@@ -29,9 +58,21 @@ export async function generateMetadata({
         };
     }
 
+    const seoData = categorySeoData[slug];
+
     return {
-        title: category.name,
-        description: category.description,
+        title: seoData?.title || `${category.name} | ToolMansion`,
+        description: seoData?.description || category.description,
+        keywords: seoData?.keywords || [category.name, "tools"],
+        alternates: {
+            canonical: `/category/${slug}`,
+        },
+        openGraph: {
+            title: seoData?.title || `${category.name} | ToolMansion`,
+            description: seoData?.description || category.description,
+            url: `/category/${slug}`,
+            type: "website",
+        },
     };
 }
 
