@@ -6,6 +6,11 @@ import {
     getToolsByCategory,
 } from "@/data/toolsRegistry";
 import { ToolGrid } from "@/components/directory/ToolGrid";
+import { ImageToolsContent, imageToolsFAQ } from "./ImageToolsContent";
+import { PdfToolsContent, pdfToolsFAQ } from "./PdfToolsContent";
+import { DevToolsContent, devToolsFAQ } from "./DevToolsContent";
+import { TextToolsContent, textToolsFAQ } from "./TextToolsContent";
+import { GeneratorsContent, generatorsFAQ } from "./GeneratorsContent";
 
 interface CategoryPageProps {
     params: Promise<{ slug: string }>;
@@ -18,11 +23,26 @@ export async function generateStaticParams() {
 }
 
 // SEO-optimized titles for categories (without | ToolMansion - layout adds it)
-const categorySeoData: Record<string, { title: string; description: string; keywords: string[] }> = {
+const categorySeoData: Record<string, { 
+    title: string; 
+    description: string; 
+    keywords: string[];
+    h1?: string;
+}> = {
     image: {
-        title: "Image Tools - Resize, Convert & Compress Images",
-        description: "Free browser-based image tools. Convert between JPG, PNG, WebP, resize, compress, crop, add watermarks — all processing happens locally on your device. No uploads.",
-        keywords: ["image tools", "image converter", "resize image", "compress image", "browser image editor"],
+        title: "Image Tools - Free Browser-Based Image Editor & Converter",
+        h1: "Free Image Tools — Convert, Resize, Compress & Edit Privately",
+        description: "Free browser-based image tools. Convert between JPG, PNG, WebP, resize, compress, crop, add watermarks — all processing happens locally on your device. No uploads, 100% private.",
+        keywords: [
+            "image tools", 
+            "browser image editor", 
+            "offline image converter",
+            "private image resizer",
+            "compress images without uploading",
+            "free image editor online",
+            "local image processing",
+            "secure photo editor"
+        ],
     },
     pdf: {
         title: "PDF Tools - Merge, Split & Convert PDFs Online",
@@ -86,6 +106,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
     const tools = getToolsByCategory(slug);
     const liveCount = tools.filter((t) => t.status === "Live").length;
+    const seoData = categorySeoData[slug];
 
     // BreadcrumbList Schema
     const breadcrumbSchema = {
@@ -107,13 +128,101 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         ]
     };
 
+    // FAQ Schema for category pages
+    const faqSchema = slug === 'image' ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": imageToolsFAQ.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    } : slug === 'pdf' ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": pdfToolsFAQ.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    } : slug === 'dev' ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": devToolsFAQ.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    } : slug === 'text' ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": textToolsFAQ.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    } : slug === 'generators' ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": generatorsFAQ.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    } : null;
+
+    // ItemList Schema for category pages
+    const itemListSchema = slug === 'image' || slug === 'pdf' || slug === 'dev' || slug === 'text' || slug === 'generators' ? {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": `ToolMansion ${category.name}`,
+        "description": `Complete collection of free browser-based ${category.name.toLowerCase()}`,
+        "itemListElement": tools
+            .filter(t => t.status === "Live")
+            .map((tool, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": tool.name,
+                "description": tool.description,
+                "url": `https://toolmansion.com/tools/${tool.slug}`
+            }))
+    } : null;
+
     return (
         <div className="min-h-screen py-12 md:py-20">
-            {/* Breadcrumb Schema */}
+            {/* Structured Data */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
+            {itemListSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+                />
+            )}
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="text-center mb-12">
@@ -121,23 +230,222 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                         {category.icon}
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                        {category.name}
+                        {seoData?.h1 || category.name}
                     </h1>
-                    <p className="text-xl text-foreground-secondary max-w-2xl mx-auto mb-6">
-                        {category.description}
+                    <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
+                        {seoData?.description || category.description}
                     </p>
                     <div className="flex items-center justify-center gap-6 text-sm">
-                        <span className="text-foreground-secondary">
+                        <span className="text-muted-foreground">
                             {tools.length} tools
                         </span>
                         {liveCount > 0 && (
-                            <span className="text-success">{liveCount} live</span>
+                            <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                                {liveCount} live
+                            </span>
                         )}
                     </div>
                 </div>
 
-                {/* Tool Grid */}
-                <ToolGrid tools={tools} />
+                {/* Enhanced Content for Image Tools */}
+                {slug === 'image' ? (
+                    <>
+                        <ImageToolsContent tools={tools} />
+                        
+                        {/* FAQ Section */}
+                        <section className="mt-16">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+                                Frequently Asked Questions About Our Image Tools
+                            </h2>
+                            <div className="space-y-4">
+                                {imageToolsFAQ.map((faq, index) => (
+                                    <div 
+                                        key={index}
+                                        className="bg-card border border-border rounded-xl overflow-hidden"
+                                    >
+                                        <details className="group">
+                                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-muted/50 transition-colors">
+                                                <h3 className="font-semibold text-foreground pr-4">
+                                                    {faq.question}
+                                                </h3>
+                                                <svg 
+                                                    className="w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform group-open:rotate-180" 
+                                                    fill="none" 
+                                                    viewBox="0 0 24 24" 
+                                                    stroke="currentColor"
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </summary>
+                                            <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                                                {faq.answer}
+                                            </div>
+                                        </details>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </>
+                ) : slug === 'pdf' ? (
+                    /* Enhanced Content for PDF Tools */
+                    <>
+                        <PdfToolsContent tools={tools} />
+                        
+                        {/* FAQ Section */}
+                        <section className="mt-16">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+                                Frequently Asked Questions About Our PDF Tools
+                            </h2>
+                            <div className="space-y-4">
+                                {pdfToolsFAQ.map((faq, index) => (
+                                    <div 
+                                        key={index}
+                                        className="bg-card border border-border rounded-xl overflow-hidden"
+                                    >
+                                        <details className="group">
+                                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-muted/50 transition-colors">
+                                                <h3 className="font-semibold text-foreground pr-4">
+                                                    {faq.question}
+                                                </h3>
+                                                <svg 
+                                                    className="w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform group-open:rotate-180" 
+                                                    fill="none" 
+                                                    viewBox="0 0 24 24" 
+                                                    stroke="currentColor"
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </summary>
+                                            <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                                                {faq.answer}
+                                            </div>
+                                        </details>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </>
+                ) : slug === 'dev' ? (
+                    /* Enhanced Content for Developer Tools */
+                    <>
+                        <DevToolsContent tools={tools} />
+                        
+                        {/* FAQ Section */}
+                        <section className="mt-16">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+                                Frequently Asked Questions About Our Developer Tools
+                            </h2>
+                            <div className="space-y-4">
+                                {devToolsFAQ.map((faq, index) => (
+                                    <div 
+                                        key={index}
+                                        className="bg-card border border-border rounded-xl overflow-hidden"
+                                    >
+                                        <details className="group">
+                                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-muted/50 transition-colors">
+                                                <h3 className="font-semibold text-foreground pr-4">
+                                                    {faq.question}
+                                                </h3>
+                                                <svg 
+                                                    className="w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform group-open:rotate-180" 
+                                                    fill="none" 
+                                                    viewBox="0 0 24 24" 
+                                                    stroke="currentColor"
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </summary>
+                                            <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                                                {faq.answer}
+                                            </div>
+                                        </details>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </>
+                ) : slug === 'text' ? (
+                    /* Enhanced Content for Text Tools */
+                    <>
+                        <TextToolsContent tools={tools} />
+                        
+                        {/* FAQ Section */}
+                        <section className="mt-16">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+                                Frequently Asked Questions About Our Text Tools
+                            </h2>
+                            <div className="space-y-4">
+                                {textToolsFAQ.map((faq, index) => (
+                                    <div 
+                                        key={index}
+                                        className="bg-card border border-border rounded-xl overflow-hidden"
+                                    >
+                                        <details className="group">
+                                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-muted/50 transition-colors">
+                                                <h3 className="font-semibold text-foreground pr-4">
+                                                    {faq.question}
+                                                </h3>
+                                                <svg 
+                                                    className="w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform group-open:rotate-180" 
+                                                    fill="none" 
+                                                    viewBox="0 0 24 24" 
+                                                    stroke="currentColor"
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </summary>
+                                            <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                                                {faq.answer}
+                                            </div>
+                                        </details>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </>
+                ) : slug === 'generators' ? (
+                    /* Enhanced Content for Generators */
+                    <>
+                        <GeneratorsContent tools={tools} />
+                        
+                        {/* FAQ Section */}
+                        <section className="mt-16">
+                            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+                                Frequently Asked Questions About Our Generators
+                            </h2>
+                            <div className="space-y-4">
+                                {generatorsFAQ.map((faq, index) => (
+                                    <div 
+                                        key={index}
+                                        className="bg-card border border-border rounded-xl overflow-hidden"
+                                    >
+                                        <details className="group">
+                                            <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-muted/50 transition-colors">
+                                                <h3 className="font-semibold text-foreground pr-4">
+                                                    {faq.question}
+                                                </h3>
+                                                <svg 
+                                                    className="w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform group-open:rotate-180" 
+                                                    fill="none" 
+                                                    viewBox="0 0 24 24" 
+                                                    stroke="currentColor"
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </summary>
+                                            <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                                                {faq.answer}
+                                            </div>
+                                        </details>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </>
+                ) : (
+                    /* Standard Tool Grid for Other Categories */
+                    <ToolGrid tools={tools} />
+                )}
             </div>
         </div>
     );

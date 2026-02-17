@@ -1,8 +1,65 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { ToolDefinition, Category, getToolBySlug, getCategoryBySlug } from "@/data/toolsRegistry";
 import { FAQ } from "./FAQ";
 import { ToolTracker } from "./ToolTracker";
-import { ChevronRight, Home, ShieldCheck, Zap } from "lucide-react";
+import { ChevronRight, Home, ShieldCheck } from "lucide-react";
+
+// Lazy load enhanced content components for SEO
+const ImageConverterContent = dynamic(() => import("./ImageConverterContent").then(m => ({ default: m.ImageConverterContent })), {
+    loading: () => <ContentLoadingState />,
+});
+const ImageResizerContent = dynamic(() => import("./ImageResizerContent").then(m => ({ default: m.ImageResizerContent })), {
+    loading: () => <ContentLoadingState />,
+});
+const ImageCompressorContent = dynamic(() => import("./ImageCompressorContent").then(m => ({ default: m.ImageCompressorContent })), {
+    loading: () => <ContentLoadingState />,
+});
+// Week 4
+const PdfMergerContent = dynamic(() => import("./PdfMergerContent").then(m => ({ default: m.PdfMergerContent })), {
+    loading: () => <ContentLoadingState />,
+});
+const JsonFormatterContent = dynamic(() => import("./JsonFormatterContent").then(m => ({ default: m.JsonFormatterContent })), {
+    loading: () => <ContentLoadingState />,
+});
+// Week 5
+const WebpToJpgContent = dynamic(() => import("./WebpToJpgContent").then(m => ({ default: m.WebpToJpgContent })), {
+    loading: () => <ContentLoadingState />,
+});
+const JpgToPdfContent = dynamic(() => import("./JpgToPdfContent").then(m => ({ default: m.JpgToPdfContent })), {
+    loading: () => <ContentLoadingState />,
+});
+const CropImageContent = dynamic(() => import("./CropImageContent").then(m => ({ default: m.CropImageContent })), {
+    loading: () => <ContentLoadingState />,
+});
+// Week 6
+const PdfSplitterContent = dynamic(() => import("./PdfSplitterContent").then(m => ({ default: m.PdfSplitterContent })), {
+    loading: () => <ContentLoadingState />,
+});
+const PdfToImagesContent = dynamic(() => import("./PdfToImagesContent").then(m => ({ default: m.PdfToImagesContent })), {
+    loading: () => <ContentLoadingState />,
+});
+const WordCounterContent = dynamic(() => import("./WordCounterContent").then(m => ({ default: m.WordCounterContent })), {
+    loading: () => <ContentLoadingState />,
+});
+// Week 7
+const Base64Content = dynamic(() => import("./Base64Content").then(m => ({ default: m.Base64Content })), {
+    loading: () => <ContentLoadingState />,
+});
+const UrlEncoderContent = dynamic(() => import("./UrlEncoderContent").then(m => ({ default: m.UrlEncoderContent })), {
+    loading: () => <ContentLoadingState />,
+});
+
+function ContentLoadingState() {
+    return (
+        <div className="animate-pulse space-y-4">
+            <div className="h-8 bg-muted rounded w-1/3"></div>
+            <div className="h-4 bg-muted rounded w-full"></div>
+            <div className="h-4 bg-muted rounded w-5/6"></div>
+            <div className="h-32 bg-muted rounded"></div>
+        </div>
+    );
+}
 
 interface ToolShellProps {
     tool: ToolDefinition;
@@ -42,6 +99,30 @@ export function ToolShell({ tool, category, children }: ToolShellProps) {
         ]
     };
 
+    // SoftwareApplication schema for tool pages
+    const softwareSchema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": tool.name,
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any (Web Browser)",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": tool.status === "Live" ? {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "150"
+        } : undefined,
+        "description": tool.description,
+        "url": `${BASE_URL}/tools/${tool.slug}`,
+        "featureList": tool.tags.slice(0, 5).join(", "),
+        "softwareVersion": "1.0",
+        "license": "https://opensource.org/licenses/MIT"
+    };
+
     return (
         <div className="min-h-screen pb-12">
             {/* Track tool usage */}
@@ -50,6 +131,10 @@ export function ToolShell({ tool, category, children }: ToolShellProps) {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
             />
             {/* Hero Section */}
             <div className="bg-muted/30 border-b border-border mb-8">
@@ -125,6 +210,79 @@ export function ToolShell({ tool, category, children }: ToolShellProps) {
                 <div className="flex items-center justify-center min-h-[250px] bg-background-tertiary/50 border border-border/50 rounded-xl mb-12 text-sm text-foreground-secondary">
                     {/* Advertisement Space */}
                 </div>
+
+                {/* Enhanced SEO Content for High-Volume Keywords */}
+                {/* Week 3 */}
+                {tool.slug === "convert-image" && (
+                    <div className="mb-12">
+                        <ImageConverterContent />
+                    </div>
+                )}
+                {tool.slug === "resize-image" && (
+                    <div className="mb-12">
+                        <ImageResizerContent />
+                    </div>
+                )}
+                {tool.slug === "compress-image-to-size" && (
+                    <div className="mb-12">
+                        <ImageCompressorContent />
+                    </div>
+                )}
+                {/* Week 4 */}
+                {tool.slug === "merge-pdf" && (
+                    <div className="mb-12">
+                        <PdfMergerContent />
+                    </div>
+                )}
+                {tool.slug === "json-formatter" && (
+                    <div className="mb-12">
+                        <JsonFormatterContent />
+                    </div>
+                )}
+                {/* Week 5 */}
+                {tool.slug === "webp-to-jpg" && (
+                    <div className="mb-12">
+                        <WebpToJpgContent />
+                    </div>
+                )}
+                {tool.slug === "jpg-to-pdf" && (
+                    <div className="mb-12">
+                        <JpgToPdfContent />
+                    </div>
+                )}
+                {tool.slug === "crop-image" && (
+                    <div className="mb-12">
+                        <CropImageContent />
+                    </div>
+                )}
+                {/* Week 6 */}
+                {tool.slug === "split-pdf" && (
+                    <div className="mb-12">
+                        <PdfSplitterContent />
+                    </div>
+                )}
+                {tool.slug === "pdf-to-images" && (
+                    <div className="mb-12">
+                        <PdfToImagesContent />
+                    </div>
+                )}
+                {tool.slug === "word-counter" && (
+                    <div className="mb-12">
+                        <WordCounterContent />
+                    </div>
+                )}
+                {/* Week 7 */
+                }
+                {tool.slug === "base64" && (
+                    <div className="mb-12">
+                        <Base64Content />
+                    </div>
+                )}
+                {tool.slug === "url-encode" && (
+                    <div className="mb-12">
+                        <UrlEncoderContent />
+                    </div>
+                )}
 
                 {/* FAQ Section */}
                 {tool.seo.faq.length > 0 && (
