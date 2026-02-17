@@ -112,10 +112,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-        
+
         {/* GA4 Tracking Code */}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA4_ID || 'G-XXXXXXXXXX'}`}
+          src="https://www.googletagmanager.com/gtag/js?id=G-JWLN7VJNVC"
           strategy="afterInteractive"
         />
         <Script id="ga4-init" strategy="afterInteractive">
@@ -123,7 +123,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA4_ID || 'G-XXXXXXXXXX'}', {
+            gtag('config', 'G-JWLN7VJNVC', {
               page_title: document.title,
               page_location: window.location.href,
               send_page_view: true
