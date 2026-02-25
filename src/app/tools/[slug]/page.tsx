@@ -129,6 +129,9 @@ const toolComponents: Record<string, React.ComponentType> = {
     "markdown-preview": dynamic(() => import("@/tools/markdown-preview"), {
         loading: () => <ToolLoadingState />,
     }),
+    "slug-generator": dynamic(() => import("@/tools/slug-generator"), {
+        loading: () => <ToolLoadingState />,
+    }),
 };
 
 function ToolLoadingState() {
@@ -281,6 +284,22 @@ export default async function ToolPage({ params }: ToolPageProps) {
                 { "@type": "HowToStep", "name": "Select Format", "text": 'Choose between standard hyphenated format (xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx) or compact format without hyphens.' },
                 { "@type": "HowToStep", "name": "Generate UUIDs", "text": 'Click the "Generate" button to create cryptographically secure random UUIDs.' },
                 { "@type": "HowToStep", "name": "Copy or Download", "text": 'Copy individual UUIDs to clipboard with one click, or download all generated UUIDs as a text file.' }
+            ]
+        },
+        "slug-generator": {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Create SEO-Friendly URL Slugs",
+            "description": "Generate clean, SEO-friendly URL slugs from any text using our free online slug generator. Perfect for bloggers, developers, and content creators.",
+            "totalTime": "PT30S",
+            "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "0" },
+            "supply": [{ "@type": "HowToSupply", "name": "Text to convert to slug" }],
+            "tool": [{ "@type": "HowToTool", "name": "ToolMansion Slug Generator" }],
+            "step": [
+                { "@type": "HowToStep", "name": "Open Slug Generator", "text": "Navigate to the Slug Generator tool on ToolMansion.", "url": "https://toolmansion.com/tools/slug-generator" },
+                { "@type": "HowToStep", "name": "Enter Your Text", "text": 'Type or paste the text you want to convert into a URL slug (e.g., "My Blog Post Title!").' },
+                { "@type": "HowToStep", "name": "Choose Options", "text": 'Select your preferred separator (hyphen, underscore, or dot), choose whether to use lowercase, and decide if you want to remove stop words.' },
+                { "@type": "HowToStep", "name": "Copy Your Slug", "text": 'The slug is generated automatically as you type. Copy the result to use in your URL.' }
             ]
         }
     };

@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 import { trackToolUsed } from '@/lib/analytics';
+import { addRecentTool } from '@/lib/recentTools';
+import { getToolBySlug } from '@/data/toolsRegistry';
 
 interface ToolTrackerProps {
   toolName: string;
@@ -14,8 +16,18 @@ interface ToolTrackerProps {
  */
 export function ToolTracker({ toolName, toolCategory }: ToolTrackerProps) {
   useEffect(() => {
-    // Track tool usage when component mounts
+    // Track tool usage in Google Analytics
     trackToolUsed(toolName, toolCategory);
+    
+    // Add to recently used tools in localStorage
+    const tool = getToolBySlug(toolName);
+    if (tool) {
+      addRecentTool({
+        slug: tool.slug,
+        name: tool.name,
+        category: tool.category
+      });
+    }
   }, [toolName, toolCategory]);
 
   return null; // This component doesn't render anything

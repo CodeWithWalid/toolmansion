@@ -52,6 +52,9 @@ const UrlEncoderContent = dynamic(() => import("./UrlEncoderContent").then(m => 
 const UUIDGeneratorContent = dynamic(() => import("./UUIDGeneratorContent").then(m => ({ default: m.UUIDGeneratorContent })), {
     loading: () => <ContentLoadingState />,
 });
+const SlugGeneratorContent = dynamic(() => import("./SlugGeneratorContent").then(m => ({ default: m.SlugGeneratorContent })), {
+    loading: () => <ContentLoadingState />,
+});
 
 function ContentLoadingState() {
     return (
@@ -126,6 +129,20 @@ export function ToolShell({ tool, category, children }: ToolShellProps) {
         "license": "https://opensource.org/licenses/MIT"
     };
 
+    // FAQPage schema for tools with FAQs
+    const faqSchema = tool.seo.faq.length > 0 ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": tool.seo.faq.map(faq => ({
+            "@type": "Question",
+            "name": faq.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a
+            }
+        }))
+    } : null;
+
     return (
         <div className="min-h-screen pb-12">
             {/* Track tool usage */}
@@ -139,6 +156,12 @@ export function ToolShell({ tool, category, children }: ToolShellProps) {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
             />
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
             {/* Hero Section */}
             <div className="bg-muted/30 border-b border-border mb-8">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
@@ -289,6 +312,11 @@ export function ToolShell({ tool, category, children }: ToolShellProps) {
                 {tool.slug === "uuid-generator" && (
                     <div className="mb-12">
                         <UUIDGeneratorContent />
+                    </div>
+                )}
+                {tool.slug === "slug-generator" && (
+                    <div className="mb-12">
+                        <SlugGeneratorContent />
                     </div>
                 )}
 

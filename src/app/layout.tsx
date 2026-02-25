@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | ToolMansion",
   },
   description:
-    "Free online tools that work entirely in your browser. Convert images, manage PDFs, format code — no uploads, complete privacy. 29+ tools available.",
+    "Free online tools that work entirely in your browser. Convert images, manage PDFs, format code — no uploads, complete privacy. 30+ tools available.",
   keywords: [
     "toolmansion",
     "online tools",

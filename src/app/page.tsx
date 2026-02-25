@@ -2,13 +2,14 @@ import { Metadata } from "next";
 import { TOOLS, CATEGORIES } from "@/data/toolsRegistry";
 import { CategoryTile } from "@/components/directory/CategoryTile";
 import { ToolGrid } from "@/components/directory/ToolGrid";
+import { RecentTools } from "@/components/RecentTools";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Zap, Lock, WifiOff } from "lucide-react";
 
 // Homepage-specific SEO metadata
 export const metadata: Metadata = {
   title: "ToolMansion | 100% Private Browser-Based Image & PDF Tools",
-  description: "Free online tools that work entirely in your browser. Convert images, manage PDFs, format code — no uploads, complete privacy. 29+ tools available.",
+  description: "Free online tools that work entirely in your browser. Convert images, manage PDFs, format code — no uploads, complete privacy. 30+ tools available.",
   keywords: [
     "browser-based tools",
     "offline tools",
@@ -158,6 +159,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Recently Used Tools - Shows for returning users */}
+      <RecentTools />
 
       {/* Categories Section */}
       <section className="py-16 md:py-24 bg-muted/30">
