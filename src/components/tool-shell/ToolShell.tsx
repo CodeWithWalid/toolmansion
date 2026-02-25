@@ -49,6 +49,9 @@ const Base64Content = dynamic(() => import("./Base64Content").then(m => ({ defau
 const UrlEncoderContent = dynamic(() => import("./UrlEncoderContent").then(m => ({ default: m.UrlEncoderContent })), {
     loading: () => <ContentLoadingState />,
 });
+const UUIDGeneratorContent = dynamic(() => import("./UUIDGeneratorContent").then(m => ({ default: m.UUIDGeneratorContent })), {
+    loading: () => <ContentLoadingState />,
+});
 
 function ContentLoadingState() {
     return (
@@ -281,6 +284,11 @@ export function ToolShell({ tool, category, children }: ToolShellProps) {
                 {tool.slug === "url-encode" && (
                     <div className="mb-12">
                         <UrlEncoderContent />
+                    </div>
+                )}
+                {tool.slug === "uuid-generator" && (
+                    <div className="mb-12">
+                        <UUIDGeneratorContent />
                     </div>
                 )}
 

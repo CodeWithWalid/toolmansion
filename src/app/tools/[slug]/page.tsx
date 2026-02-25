@@ -265,6 +265,23 @@ export default async function ToolPage({ params }: ToolPageProps) {
                 { "@type": "HowToStep", "name": "Customize Size", "text": "Adjust the QR code size and error correction level if needed." },
                 { "@type": "HowToStep", "name": "Download QR Code", "text": "Download your QR code as PNG or SVG." }
             ]
+        },
+        "uuid-generator": {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Generate UUIDs Online",
+            "description": "Generate UUID v4 and GUID identifiers instantly using our free online UUID generator. Perfect for developers needing unique identifiers.",
+            "totalTime": "PT30S",
+            "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "0" },
+            "supply": [],
+            "tool": [{ "@type": "HowToTool", "name": "ToolMansion UUID Generator" }],
+            "step": [
+                { "@type": "HowToStep", "name": "Open UUID Generator", "text": "Navigate to the UUID Generator tool on ToolMansion.", "url": "https://toolmansion.com/tools/uuid-generator" },
+                { "@type": "HowToStep", "name": "Choose Quantity", "text": 'Enter how many UUIDs you want to generate (1 to 1,000). Default is 1.' },
+                { "@type": "HowToStep", "name": "Select Format", "text": 'Choose between standard hyphenated format (xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx) or compact format without hyphens.' },
+                { "@type": "HowToStep", "name": "Generate UUIDs", "text": 'Click the "Generate" button to create cryptographically secure random UUIDs.' },
+                { "@type": "HowToStep", "name": "Copy or Download", "text": 'Copy individual UUIDs to clipboard with one click, or download all generated UUIDs as a text file.' }
+            ]
         }
     };
 
