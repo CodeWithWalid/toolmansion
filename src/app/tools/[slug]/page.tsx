@@ -301,6 +301,39 @@ export default async function ToolPage({ params }: ToolPageProps) {
                 { "@type": "HowToStep", "name": "Choose Options", "text": 'Select your preferred separator (hyphen, underscore, or dot), choose whether to use lowercase, and decide if you want to remove stop words.' },
                 { "@type": "HowToStep", "name": "Copy Your Slug", "text": 'The slug is generated automatically as you type. Copy the result to use in your URL.' }
             ]
+        },
+        "password-generator": {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Generate Strong, Secure Passwords",
+            "description": "Create strong, random passwords using our free password generator. Customize length and character types for maximum security.",
+            "totalTime": "PT1M",
+            "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "0" },
+            "supply": [],
+            "tool": [{ "@type": "HowToTool", "name": "ToolMansion Password Generator" }],
+            "step": [
+                { "@type": "HowToStep", "name": "Open Password Generator", "text": "Navigate to the Password Generator tool on ToolMansion.", "url": "https://toolmansion.com/tools/password-generator" },
+                { "@type": "HowToStep", "name": "Set Password Length", "text": "Choose your desired password length. We recommend at least 16 characters for maximum security." },
+                { "@type": "HowToStep", "name": "Select Character Types", "text": "Toggle which character types to include: uppercase letters, lowercase letters, numbers, and special symbols." },
+                { "@type": "HowToStep", "name": "Generate Password", "text": "Click the Generate button to create your secure password using cryptographically secure random generation." },
+                { "@type": "HowToStep", "name": "Copy and Use", "text": "Copy the generated password to your clipboard and use it for your account. Never reuse passwords across different sites." }
+            ]
+        },
+        "word-counter": {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Count Words and Characters Online",
+            "description": "Count words, characters, sentences, and paragraphs instantly with our free word counter tool. Perfect for essays, articles, and social media.",
+            "totalTime": "PT30S",
+            "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "0" },
+            "supply": [{ "@type": "HowToSupply", "name": "Text to analyze" }],
+            "tool": [{ "@type": "HowToTool", "name": "ToolMansion Word Counter" }],
+            "step": [
+                { "@type": "HowToStep", "name": "Open Word Counter", "text": "Navigate to the Word Counter tool on ToolMansion.", "url": "https://toolmansion.com/tools/word-counter" },
+                { "@type": "HowToStep", "name": "Paste or Type Your Text", "text": "Enter your text in the input area. You can paste content from any source or type directly." },
+                { "@type": "HowToStep", "name": "View Real-Time Statistics", "text": "Watch the statistics update instantly as you type. See word count, character count, sentences, paragraphs, and reading time." },
+                { "@type": "HowToStep", "name": "Check Social Media Limits", "text": "Use the visual indicators to ensure your text fits within platform limits like Twitter/X (280 chars) or Instagram (2,200 chars)." }
+            ]
         }
     };
 
